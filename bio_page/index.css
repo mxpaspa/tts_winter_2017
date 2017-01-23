@@ -1,0 +1,122 @@
+html {
+  font-family: 'Inconsolata','Helvetica Neue';
+}
+body {
+  background-image: url('images/Sunset_image.jpg');
+  background-size: cover;
+}
+
+#navbar {
+  width: 100%;
+  height: 70px;
+  margin: 0 auto;
+  top: 0;
+}
+
+navbar-list {
+  height: 70px;
+  margin: auto;
+  position: fixed;
+  top: 0;
+}
+
+.navbar-inner {
+  padding: 10px;
+}
+
+#navbar-list a{
+  text-decoration: none;
+  font-weight: 100;
+  letter-spacing: 1;
+  color: white;
+  padding: 15px;
+}
+
+#navbar-list p{
+  text-decoration: none;
+  color: white;
+  padding: 15px;
+}
+
+#navbar-list li {
+  list-style: none;
+  display: inline-block;
+  float: right
+}
+
+#carousel-container {
+  height: 500px;
+  width: 500px;
+  margin: 30px auto;
+  z-index: 900;
+  color: #fff;
+  overflow: hidden;
+  text-align: center;
+}
+
+.slide {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  top: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+.slide h1 {
+  font-size: small;
+  font-weight: 100;
+  margin: 0 auto;
+  padding-top: 10px;
+  color: 	#A9A9A9
+}
+.slide h2 {
+  font-weight: 100;
+  letter-spacing: 4;
+  font-size: 40px;
+}
+
+.slide p1 {
+  font-weight: 200;
+  letter-spacing: 2;
+}
+
+.slide-1-line-break {
+  width: 400px;
+  border-top: 1px solid white;
+  margin: 0 auto;
+}
+
+.slide-1-second-line-break {
+  width: 400px;
+  border-top: 1px solid white;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.slide-2-second-line-break {
+  width: 400px;
+  border-top: 1px solid white;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.scotland-pic {
+  height: 150px;
+  width: 150px;
+  margin: 20px;
+  border-radius: 50%
+}
+
+.bio-content {
+  margin: 30px;
+}
+
+.social-icons {
+  font-size: 40px;
+}
+
+.social-icons a {
+  color: white;
+}
