@@ -1,0 +1,22 @@
+body {
+  background-color: tomato;
+}
+
+
+#another {
+  height: 400px;
+  width: 400px;
+  border: 2px solid white;
+  font-size: 50px;
+  margin: 0 auto;
+  margin-top: 160px;
+}
+
+#another p {
+  color: white;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-top: 150px;
+  font-family: Inconsolata;
+  font-size: 40px;
+}

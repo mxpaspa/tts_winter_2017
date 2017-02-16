@@ -1,0 +1,16 @@
+.sign-up{
+  display: inline;
+  float: right;
+}
+
+.link, .explanation {
+  display:inline
+}
+
+.link {
+  float: left
+}
+
+.explanation {
+  float: right
+}

@@ -34,7 +34,7 @@ end
 puts array_1
 puts "-----"
 
-puts "how many numbers do you want in your first list ?"
+puts "how many numbers do you want in your second list ?"
 user_length_2 = gets.chomp.to_i
 
 user_length_2.times.each do

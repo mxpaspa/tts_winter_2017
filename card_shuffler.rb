@@ -1,91 +1,119 @@
+require 'pp'
+
 =begin
 Create a program that will shuffle a deck of cards and assign a number of players two cards.
 Make sure to ask the user for the number of players who are playing and that there are no duplicate cards in the deck!
+
+Objects:
+Dealer
+Deck of cards
+# of players
+Stack of chips
+Methods:
+deal
+betting
+winner
 =end
 
+@players = {}
+@player_bets = {}
+dealer_cards_list = []
 ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
+face_cards =["J", "Q", "K", "A"]
 suits = ["hearts", "spades", "clubs", "diamonds"]
 deck = ranks.product(suits)
 shuffled_deck = deck.shuffle
-
+rank_list = []
+ranks = []
 puts "how many players?"
 number_of_players = gets.chomp.to_i
 
 
-1.upto(number_of_players) do |n|
+
+# dealer_cards = shuffled_deck.shift
+# puts " dealer cards are #{dealer_cards}"
+# 1.upto(number_of_players) do |n|
+#   player_cards = shuffled_deck.shift(1)
+#   puts "player #{n} cards are: #{player_cards}"
+# end
+
+
+#1st_draw
+dealer_cards = shuffled_deck.shift
+dealer_cards_list.push(dealer_cards)
+puts " dealer cards are #{dealer_cards}"
+1.upto(number_of_players) do |n,key,value|
   player_cards = shuffled_deck.shift(2)
-  puts "player #{n} cards are: #{player_cards}"
-
+  @players.store("player #{n}",player_cards)
 end
+pp @players
 
 
-=begin
+# @players.each do |key,val|
+#   if @players[key].sum > 21
+#     puts "bust"
 
-deck << [cards,suits].transpose.shuffle
 
-@deck << [@cards,@suits].transpose.shuffle[0..3]
+# #place first bets
+# 1.upto(number_of_players) do |n,key,value|
+#   puts "Player #{n}, how much would you like to bet?"
+#   bet = gets.chomp.to_i
+#   @player_bets.store("player #{n}",bet)
+# end
+# pp @player_bets
 
-hands = array.each_slice(hand_size).take(player_count)
-
-hands.each_with_index do |hand, n|
-  puts "player #{n + 1} cards are: #{hand}"
+# take more cards
+1.upto(number_of_players) do |n,key,value|
+  puts "Player #{n} would you like another card?"
+  answer = gets.chomp
+    if answer == 'yes'
+      player_cards = shuffled_deck.shift(1)
+      @players["player #{n}"] << player_cards.flatten
+    end
 end
+puts "second draw:"
+pp @players
 
+#shows dealer cards to determine winner
+dealer_cards = shuffled_deck.shift
+dealer_cards_list.push(dealer_cards)
 
-
-if number_of_players > 1
-
-
-@deck << [@cards,@suits].transpose.shuffle[0..3]
-print @deck
-
-5.downto(1){ |n| puts "We are at number #{n}." }
-
-1.times do
-  @deck << @cards.shuffle[0..3]
-  @deck << @suits.shuffle[0..3]
+#strips the dealer cards of the suits
+dealer_cards_list.each do |ind|
+  ind.select{ |s| s.include?("J")}.each{ |s| s.replace( "10" ) }
+  ind.select{ |s| s.include?("Q")}.each{ |s| s.replace( "10" ) }
+  ind.select{ |s| s.include?("K")}.each{ |s| s.replace( "10" ) }
+  ind.select{ |s| s.include?("A")}.each{ |s| s.replace( "10" ) }
 end
-print @deck
+  puts "dealer cards (face cards converted)are:"
+pp dealer_cards_list
 
-
-@deck << [@cards,@suits].transpose.shuffle[0..3]
-print @deck
-
-
-player_1_cards = @deck.each do |x,y| @deck.rassoc(1)
-  puts "player 1 cards are #{x} : #{y}"
+#strips the suits
+@players.each do |key,val|
+  @players[key].map!(&:shift)
 end
+puts " player cards stripped of suits:"
+pp @players
 
-
-player_1_cards = @deck.each do |x,y|
-  puts "player cards are #{x} : #{y}"
+#after stripped suits, converts face cards to 10
+@players.each do |key,val|
+  @players[key].select{ |s| s.include?("J")}.each{ |s| s.replace( "10" ) }
+  @players[key].select{ |s| s.include?("Q")}.each{ |s| s.replace( "10" ) }
+  @players[key].select{ |s| s.include?("K")}.each{ |s| s.replace( "10" ) }
+  @players[key].select{ |s| s.include?("A")}.each{ |s| s.replace( "10" ) }
 end
+puts "player face cards converted to 10:"
+pp @players
 
 
-
-player_2_cards = @deck.each do |x|
-  puts "player 2 cards are #{x}"
+#convert player hands to integers
+@players.each do |key,val|
+  @players[key].map!(&:to_i)
 end
+pp @players
 
-
-player_2_cards = deck[2].each do |x,y|
-  puts "player two cards are #{x} : #{y}"
+@players.each do |n,key|
+  if key.sum > 21
+    puts "player#{n} has lost"
+  end
 end
-
-
-
-4.times do
-  deck.push(cards.shuffle.to_s)
-end
-puts deck
-
-
-
-deck = deck.each {|x| suits.insert(rand(0..52), x)}
-puts deck
-
-
-a.insert(rand(0..a.length), value)
-deck = [[card,suit]]
-deck.each { |x| puts "#{x}\n" }
-=end
